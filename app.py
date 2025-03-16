@@ -1,4 +1,5 @@
 from flask import Flask, render_template, url_for, request, send_from_directory, redirect, make_response, session
+from flask_session import Session
 import pandas as pd
 import plotly.express as px
 import ollama
@@ -6,6 +7,10 @@ import ollama
 app = Flask(__name__, static_folder='static', static_url_path='/')
 app.config['UPLOAD_FOLDER'] = 'uploads'
 app.secret_key = 'cuhk'  # Do not expose this
+app.config['PERMANENT_SESSION_LIFETIME'] = 1800 # Expiry: 30 mins
+app.config['SESSION_TYPE'] = 'cachelib' # Session as files in flask_session folder
+Session(app)  # Initialize session in flask app
+
 
 @app.route('/')
 def default():
