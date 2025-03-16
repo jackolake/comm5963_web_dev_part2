@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+{% block title %}<h1>Image Chat</h1>{% endblock %}
+{% block content %}
+    <form action="#" method="POST" enctype="multipart/form-data">
+        <h3>Upload an Image with a question</h3>
+        <hr>
+        <label>Your question:</label>
+        <input type="text" name="prompt" class="form-control">
+        <input type="file" accept="image/jpeg" name="image" class="form-control">
+        <input type="submit" value="Ask" class="form-control">
+    </form>
+    {% if content %}
+        <div class="card p-3">
+            <div class="card-header">Your image</div>
+            <div class="card-body">
+            <img src="{{ url_for('uploaded_file', filename=request.files.get('image').filename) }}"></div>
+        </div>
+        <div class="card p-3">
+            <div class="card-header">Answer</div>
+            <div class="card-body">
+            <h4>{{ content }}</h4>
+        </div>
+    {% endif %}
+{% endblock %}

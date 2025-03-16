@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Layout</title>
+    <link href="/css/bootstrap.css" rel="stylesheet">
+</head>
+<body>
+<div class="container-sm p-3">
+    <div class="card">
+        <div class="card-header">{%  block title %} {% endblock %}</div>
+        <div class="card-body">
+            {% block content %}{% endblock %}
+        </div>
+        <div class="card-footer"><h5>Copyright &copy; Jackie</h5></div>
+    </div>
+</div>
+</body>
+</html>
+

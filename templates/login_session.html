@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+{% block title %}<h1>Login Page</h1>{% endblock %}
+{% block content %}
+    {% if 'auth_user' in session %}
+        <h3>You are logged in as {{ session['auth_user'] }}</h3>
+        <a href="{{ url_for('login_session') }}?logoff">Log out</a>
+    {% else %}
+        <h3>Log in first</h3>
+        <form action="{{ url_for('login_session') }}" method="POST">
+            <label>User:</label>
+            <input type="text" name="user" class="form-control">
+            <label>Password: </label>
+            <input type="password" name="password" class="form-control">
+        <input type="submit" value="Log in">
+        </form>
+    {% endif %}
+{% endblock %}

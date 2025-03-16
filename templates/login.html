@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+{% block title %}<h1>Member Page</h1>{% endblock %}
+{% block content %}
+    {% if auth_user %}
+        <h3>Hello {{ auth_user }}</h3>
+    {% else %}
+        <h3>Log in first</h3>
+        {% if request.form.get('user') %}
+            <!-- Tried to log in but auth_user is empty -->
+            <h5 class="text-danger">Wrong user or password</h5>
+        {% endif %}
+        <form action="{{ url_for('login') }}" method="POST">
+            <label>User:</label>
+            <input type="text" name="user" class="form-control">
+            <label>Password: </label>
+            <input type="password" name="password" class="form-control">
+        <input type="submit" value="Log in">
+        </form>
+    {% endif %}
+{% endblock %}

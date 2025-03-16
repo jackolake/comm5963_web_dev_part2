@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+{% block title %}<h1>Image Upload</h1>{% endblock %}
+{% block content %}
+    <form action="/upload_img" method="POST" enctype="multipart/form-data">
+        <h3>Attach Files</h3>
+        <hr>
+        <input type="file" accept="image/jpeg" name="user_file" class="form-control">
+        <input type="submit" value="Upload" class="form-control">
+    </form>
+    {% if 'user_file' in request.files %}
+        <div class="card p-3">
+            <div class="card-header">Your image</div>
+            <div class="card-body">
+            <img src="{{ url_for('uploaded_file', filename=request.files.get('user_file').filename) }}">
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+{% block title %}<h1>Member Zone</h1>{% endblock %}
+{% block content %}
+    <h1>
+    {% if premium %}
+        Welcome (PREMIUM) {{ user }}
+    {% elif user %}
+        Hello {{ user }}
+    {% else %}
+        Please log in
+    {% endif %}
+    </h1>
+{% endblock %}

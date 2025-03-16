@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+{% block content %}
+    <h2>Currency</h2>
+    <p class="h3">
+        <a href="{{ url_for('set_cookies') }}?currency=CNY">CNY</a> |
+        <a href="{{ url_for('set_cookies') }}?currency=HKD">HKD</a> |
+        <a href="{{ url_for('set_cookies') }}?currency=USD">USD</a>
+    </p>
+    {% if 'ccy' in request.cookies %}
+        <h2>Current Cookies</h2>
+        <h3>{{ request.cookies['ccy'] }}</h3>
+    {% endif %}
+    {% if 'currency' in request.args %}
+        <h3>Setting to</h3>
+        <h3>{{ request.args['currency'] }}</h3>
+    {% endif %}
+{% endblock %}

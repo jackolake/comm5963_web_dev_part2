@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% block title %}<h1>Great Schools</h1>{% endblock %}
+{% block content %}
+<ol>
+{% for school, url in schools.items() %}
+    <li><p>
+    {% if school == "CUHK" %}
+    <a href="{{ url }}" class="btn btn-primary">{{ school }}</a>
+    {% else %}
+    <a href="{{ url }}" class="btn btn-secondary">{{ school }}</a>
+    {% endif %}
+    </p></li>
+{% endfor %}
+</ol>
+{% endblock %}
